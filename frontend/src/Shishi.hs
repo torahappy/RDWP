@@ -7,8 +7,10 @@ import qualified Data.Text as T
 import Reflex.Dom
 import Text.RawString.QQ
 import Elements
+import Control.Monad ( when )
 
-css = [r|
+css = [
+  [r|
 body, html {
     background: #ffd257;
     width: 100%;
@@ -17,11 +19,13 @@ body, html {
 .shi {
     width: 100vw;
 }
-|]
+  |]
+  ]
 
 page :: MonadWidget t m => Int -> m (Event t T.Text)
 page n = do
-  style css
-  elAttr "img" [("class", "shi"), ("src", "shishi0.jpg")] $ do
-    return ()
+  when (n == 0) $ do
+    style (css !! n)
+    elAttr "img" [("class", "shi"), ("src", "shishi0.jpg")] $ do
+      return ()
   return never
