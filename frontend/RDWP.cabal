@@ -47,6 +47,7 @@ library
     , extra
     , jsaddle-dom
     , witherable
+    , text-format
   if arch(javascript)
     build-depends:
         ghcjs-base
