@@ -21,4 +21,5 @@ input {display: block; margin: auto; width: 500px;}
     inp <- inputElement def
     (el, _) <- el' "section" $ do
       mapM (\n -> assetImg ("404" <> T.pack (show n) <> ".png") (return ())) [1..9]
-    return (tag (current $ _inputElement_value inp) (domEvent Click el))
+    let slash x = if T.null x then "/" else if T.head x == '/' then x else "/" <> x
+    return (tag (slash <$> (current $ _inputElement_value inp)) (domEvent Click el))
