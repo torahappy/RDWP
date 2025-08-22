@@ -49,8 +49,6 @@ Hot reload using custom websocket server.
 
 1. `SERVER_MODE=WARP node ./watch.js`
 
-Or without hot reloading: `./run-warp.bash`
-
 Access to `http://localhost:11923` via Google Chrome. (Firefox not supported)
 
 You can also change the hostname by specifying `SERVER_HOST`
